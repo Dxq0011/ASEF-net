@@ -1,0 +1,34 @@
+# ASEF-Net Lite Configuration for LOL-v2 Real dataset
+
+experiment_name: "asef_lol_v2_lite"
+
+dataset:
+  name: "lol_v2_real"
+  root: "/path/to/LOL-v2"
+  img_size: 256
+
+model:
+  version: "lite"
+  in_ch: 3
+  base_ch: 16
+  ode_steps: 3
+  lambda_coupling: 0.0
+  use_spatial_coupling: false
+
+loss:
+  w_rec: 1.0
+  w_per: 0.1
+  w_color: 0.08
+  w_sat: 0.08
+  w_contrast: 0.06
+  w_tone: 0.08
+  w_smooth: 0.005
+  w_field: 0.02
+
+training:
+  epochs: 300
+  batch_size: 16  # Larger batch for lite version
+  lr: 2e-4
+  weight_decay: 1e-4
+  num_workers: 4
+  vis_every: 100

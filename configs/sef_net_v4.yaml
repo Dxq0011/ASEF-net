@@ -1,0 +1,42 @@
+# SEF-Net v4 Configuration
+# SEF-Net: Learning Spatial Exposure Flows for Low-Light Image Enhancement
+
+experiment_name: "sef_net_v4_skip"
+
+# Dataset settings
+dataset:
+  name: "lol_v1"
+  root: "/root/autodl-tmp/LOL"
+  img_size: 256
+
+# Model architecture
+model:
+  in_ch: 3
+  T: 10
+  C_emb: 64
+  feat_ch: 512
+  ode_steps: 10
+  epsilon: 0.1
+
+# Loss weights
+loss:
+  lambda_rec: 1.0
+  lambda_perc: 0.1
+  lambda_phys: 0.01
+  lambda_prior: 0.001
+  lambda_temp: 0.01
+  lambda_color: 0.5
+  lambda_sat: 0.5
+  lambda_contrast: 0.05
+  lambda_tone: 0.03
+  lambda_edge: 0.05
+
+# Training settings
+training:
+  epochs: 400
+  batch_size: 16
+  lr: 2e-4
+  weight_decay: 1e-4
+  num_workers: 8
+  val_every: 5
+  save_every: 10
