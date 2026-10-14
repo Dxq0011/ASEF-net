@@ -1,0 +1,35 @@
+model:
+  channels: 512
+  base: 64
+  field_hidden: 96
+  dynamics_hidden: 176
+  exposure_emb: 32
+  attention_hidden: 192
+  stages: 10
+  rk4_steps: 10
+  epsilon: 0.1
+  eta: 0.000001
+  variant: full
+  gradient_checkpointing: true
+dataset:
+  name: LOL-v1
+  root: ./datasets/LOL-v1
+  size: 512
+  augment: true
+  directory_names: {train: our485, test: eval15}
+training:
+  seed: 2026
+  batch_size: 4
+  workers: 4
+  epochs: 300
+  lr: 0.0001
+  save_every: 100
+  output: runs/asef_lol_v1
+loss:
+  delta: 2.0
+  tau: 0.3
+  char: 1.0
+  perc: 0.1
+  mono: 0.05
+  sep: 0.1
+  temp: 0.05
